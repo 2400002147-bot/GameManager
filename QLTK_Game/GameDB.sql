@@ -15,7 +15,6 @@ INSERT INTO Users (Username, Password, DisplayName)
 VALUES ('admin', 'admin', 'ADMIN');
 
 -- 2. Bảng Liên Quân 
--- Thường là: Garena, Facebook, Apple ID
 CREATE TABLE LienQuanAccounts (
     Id INT PRIMARY KEY IDENTITY,
     Username NVARCHAR(100),
