@@ -137,12 +137,13 @@
             this.Controls.Add(this.btnLienQuan);
             this.Controls.Add(this.btnFreeFire);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Menu";
-            this.Load += new System.EventHandler(this.FormMain_Load);
+           
             this.panelHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 

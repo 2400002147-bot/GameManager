@@ -23,6 +23,17 @@ namespace GameManager.GUI
             InitializeComponent();
         }
 
+        // Ấn enter để đăng nhập
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string user = txtUsername.Text.Trim();
@@ -34,18 +45,17 @@ namespace GameManager.GUI
                 MessageBox.Show("Vui lòng nhập đầy đủ tài khoản và mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            try
+          try
             {
                 // 2. Gọi tầng BLL để kiểm tra trong SQL Server
-                if (_authService.Login(user, pass))
+                if (_authService.CheckLogin(user, pass))
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                 // 3. Mở FormMain 
+                    // 3. Mở FormMain 
                     FormMain mainForm = new FormMain(user);
-                    this.Hide(); 
-                    mainForm.ShowDialog(); 
+                    this.Hide();
+                    mainForm.ShowDialog();
                     this.Close();
                 }
                 else
@@ -68,15 +78,7 @@ namespace GameManager.GUI
             {
                 Application.Exit();
             }
-        }
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData == Keys.Enter)
-            {
-                btnLogin.PerformClick();
-                return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
+
         }
     }
 }

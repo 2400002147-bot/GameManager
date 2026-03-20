@@ -26,14 +26,15 @@
             this.lblLevel = new System.Windows.Forms.Label();
             this.numLevel = new System.Windows.Forms.NumericUpDown();
             this.lblSkin = new System.Windows.Forms.Label();
-            this.txtSkin = new System.Windows.Forms.TextBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.dgvFreeFire = new System.Windows.Forms.DataGridView();
+            this.numSoSkin = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFreeFire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoSkin)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUser
@@ -77,7 +78,10 @@
             // 
             // cboLoginType
             // 
-            this.cboLoginType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLoginType.Items.AddRange(new object[] {
+            "Garena",
+            "Facebook",
+            "Google"});
             this.cboLoginType.Location = new System.Drawing.Point(247, 95);
             this.cboLoginType.Name = "cboLoginType";
             this.cboLoginType.Size = new System.Drawing.Size(175, 24);
@@ -129,14 +133,7 @@
             this.lblSkin.Name = "lblSkin";
             this.lblSkin.Size = new System.Drawing.Size(100, 23);
             this.lblSkin.TabIndex = 10;
-            this.lblSkin.Text = "Skin súng hiếm:";
-            // 
-            // txtSkin
-            // 
-            this.txtSkin.Location = new System.Drawing.Point(653, 101);
-            this.txtSkin.Name = "txtSkin";
-            this.txtSkin.Size = new System.Drawing.Size(250, 22);
-            this.txtSkin.TabIndex = 11;
+            this.lblSkin.Text = "Số Skin súng:";
             // 
             // btnThem
             // 
@@ -180,9 +177,33 @@
             this.dgvFreeFire.Size = new System.Drawing.Size(898, 273);
             this.dgvFreeFire.TabIndex = 16;
             // 
+            // numSoSkin
+            // 
+            this.numSoSkin.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.numSoSkin.Location = new System.Drawing.Point(653, 102);
+            this.numSoSkin.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numSoSkin.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numSoSkin.Name = "numSoSkin";
+            this.numSoSkin.Size = new System.Drawing.Size(250, 22);
+            this.numSoSkin.TabIndex = 17;
+            this.numSoSkin.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // frmFreeFire
             // 
             this.ClientSize = new System.Drawing.Size(958, 532);
+            this.Controls.Add(this.numSoSkin);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.lblPass);
@@ -194,7 +215,6 @@
             this.Controls.Add(this.lblLevel);
             this.Controls.Add(this.numLevel);
             this.Controls.Add(this.lblSkin);
-            this.Controls.Add(this.txtSkin);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnXoa);
@@ -204,16 +224,18 @@
             this.Text = "Quản lý tài khoản Free Fire";
             ((System.ComponentModel.ISupportInitialize)(this.numLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFreeFire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoSkin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         private System.Windows.Forms.Label lblUser, lblPass, lblLoginType, lblIDInGame, lblLevel, lblSkin;
-        private System.Windows.Forms.TextBox txtUser, txtPass, txtIDInGame, txtSkin;
+        private System.Windows.Forms.TextBox txtUser, txtPass, txtIDInGame;
         private System.Windows.Forms.ComboBox cboLoginType;
         private System.Windows.Forms.NumericUpDown numLevel;
         private System.Windows.Forms.Button btnThem, btnSua, btnXoa, btnLamMoi;
         private System.Windows.Forms.DataGridView dgvFreeFire;
+        private System.Windows.Forms.NumericUpDown numSoSkin;
     }
 }

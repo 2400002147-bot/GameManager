@@ -78,7 +78,10 @@
             // 
             // cboLoginType
             // 
-            this.cboLoginType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLoginType.Items.AddRange(new object[] {
+            "Garena",
+            "Facebook",
+            "Google"});
             this.cboLoginType.Location = new System.Drawing.Point(247, 95);
             this.cboLoginType.Name = "cboLoginType";
             this.cboLoginType.Size = new System.Drawing.Size(175, 24);
@@ -95,6 +98,15 @@
             // cboRank
             // 
             this.cboRank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRank.Items.AddRange(new object[] {
+            "Đồng",
+            "Bạc ",
+            "Vàng",
+            "Bạch Kim,",
+            "Kim Cương",
+            "Tinh Anh",
+            "Cao Thủ",
+            "Chiến Tướng"});
             this.cboRank.Location = new System.Drawing.Point(653, 31);
             this.cboRank.Name = "cboRank";
             this.cboRank.Size = new System.Drawing.Size(250, 24);
@@ -111,7 +123,11 @@
             // numSoTuong
             // 
             this.numSoTuong.Location = new System.Drawing.Point(653, 66);
-            this.numSoTuong.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            this.numSoTuong.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numSoTuong.Name = "numSoTuong";
             this.numSoTuong.Size = new System.Drawing.Size(250, 22);
             this.numSoTuong.TabIndex = 9;
@@ -127,7 +143,11 @@
             // numSkins
             // 
             this.numSkins.Location = new System.Drawing.Point(653, 101);
-            this.numSkins.Maximum = new decimal(new int[] { 5000, 0, 0, 0 });
+            this.numSkins.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
             this.numSkins.Name = "numSkins";
             this.numSkins.Size = new System.Drawing.Size(250, 22);
             this.numSkins.TabIndex = 11;
@@ -139,7 +159,6 @@
             this.btnThem.Size = new System.Drawing.Size(75, 30);
             this.btnThem.TabIndex = 12;
             this.btnThem.Text = "Thêm";
-          
             // 
             // btnSua
             // 
@@ -148,7 +167,6 @@
             this.btnSua.Size = new System.Drawing.Size(75, 30);
             this.btnSua.TabIndex = 13;
             this.btnSua.Text = "Sửa";
-            
             // 
             // btnXoa
             // 
@@ -157,7 +175,6 @@
             this.btnXoa.Size = new System.Drawing.Size(75, 30);
             this.btnXoa.TabIndex = 14;
             this.btnXoa.Text = "Xóa";
-            
             // 
             // btnLamMoi
             // 
@@ -166,17 +183,16 @@
             this.btnLamMoi.Size = new System.Drawing.Size(75, 30);
             this.btnLamMoi.TabIndex = 15;
             this.btnLamMoi.Text = "Làm mới";
-         
             // 
             // dgvLienQuan
             // 
             this.dgvLienQuan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLienQuan.ColumnHeadersHeight = 29;
             this.dgvLienQuan.Location = new System.Drawing.Point(33, 228);
             this.dgvLienQuan.Name = "dgvLienQuan";
             this.dgvLienQuan.RowHeadersWidth = 51;
             this.dgvLienQuan.Size = new System.Drawing.Size(898, 273);
             this.dgvLienQuan.TabIndex = 16;
-         
             // 
             // frmLienQuan
             // 
@@ -200,12 +216,12 @@
             this.Controls.Add(this.dgvLienQuan);
             this.Name = "frmLienQuan";
             this.Text = "Quản lý tài khoản Liên Quân";
-         
             ((System.ComponentModel.ISupportInitialize)(this.numSoTuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSkins)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLienQuan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Label lblUser, lblPass, lblLoginType, lblRank, lblSoTuong, lblSkins;

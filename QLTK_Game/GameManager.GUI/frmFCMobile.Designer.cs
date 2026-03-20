@@ -71,16 +71,20 @@
             // 
             this.lblLoginType.Location = new System.Drawing.Point(88, 98);
             this.lblLoginType.Name = "lblLoginType";
-            this.lblLoginType.Size = new System.Drawing.Size(118, 23);
+            this.lblLoginType.Size = new System.Drawing.Size(166, 23);
             this.lblLoginType.TabIndex = 12;
-            this.lblLoginType.Text = "Đăng nhập qua:";
+            this.lblLoginType.Text = "Phương thức đăng nhập:";
             // 
             // cboLoginType
             // 
-            this.cboLoginType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLoginType.Location = new System.Drawing.Point(232, 95);
+            this.cboLoginType.Items.AddRange(new object[] {
+            "EA Account",
+            "Garena",
+            "Facebook",
+            "Google"});
+            this.cboLoginType.Location = new System.Drawing.Point(260, 95);
             this.cboLoginType.Name = "cboLoginType";
-            this.cboLoginType.Size = new System.Drawing.Size(190, 24);
+            this.cboLoginType.Size = new System.Drawing.Size(162, 24);
             this.cboLoginType.TabIndex = 11;
             // 
             // lblOVR
@@ -128,7 +132,11 @@
             // 
             // cboRegion
             // 
-            this.cboRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRegion.Items.AddRange(new object[] {
+            "Global",
+            "Việt Nam (VN)",
+            "Hàn Quốc (KR)",
+            "Nhật Bản (JP)"});
             this.cboRegion.Location = new System.Drawing.Point(653, 101);
             this.cboRegion.Name = "cboRegion";
             this.cboRegion.Size = new System.Drawing.Size(250, 24);

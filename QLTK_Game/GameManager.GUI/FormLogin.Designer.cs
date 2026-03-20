@@ -84,6 +84,7 @@
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "ĐĂNG NHẬP";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnExit
             // 
@@ -98,6 +99,7 @@
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "THOÁT";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblTitle
             // 
@@ -108,7 +110,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(350, 60);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "LOGIN SYSTEM";
+            this.lblTitle.Text = "LOGIN ";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1

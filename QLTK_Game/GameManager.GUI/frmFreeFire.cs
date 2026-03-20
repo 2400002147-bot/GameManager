@@ -69,7 +69,7 @@ namespace GameManager.GUI
                 LoginType = cboLoginType.SelectedItem.ToString(),
                 ID_InGame = txtIDInGame.Text.Trim(),
                 LevelAccount = (int)numLevel.Value,
-                SkinSungHiem = txtSkin.Text.Trim()
+                SoSkinSung = (int)numSoSkin.Value
             };
 
             if (_gameService.AddFreeFire(acc))
@@ -93,7 +93,7 @@ namespace GameManager.GUI
                 LoginType = cboLoginType.SelectedItem.ToString(),
                 ID_InGame = txtIDInGame.Text.Trim(),
                 LevelAccount = (int)numLevel.Value,
-                SkinSungHiem = txtSkin.Text.Trim()
+                SoSkinSung = (int)numSoSkin.Value
             };
 
             if (_gameService.UpdateFreeFire(acc))
@@ -126,8 +126,7 @@ namespace GameManager.GUI
             txtUser.Clear();
             txtPass.Clear();
             txtIDInGame.Clear();
-            txtSkin.Clear();
-            numLevel.Value = 1;
+            numLevel.Value = 0;
             cboLoginType.SelectedIndex = 0;
             txtUser.Focus();
         }
@@ -143,7 +142,7 @@ namespace GameManager.GUI
                 cboLoginType.SelectedItem = row.Cells["LoginType"].Value.ToString();
                 txtIDInGame.Text = row.Cells["ID_InGame"].Value.ToString();
                 numLevel.Value = Convert.ToInt32(row.Cells["LevelAccount"].Value);
-                txtSkin.Text = row.Cells["SkinSungHiem"].Value.ToString();
+                numSoSkin.Value = Convert.ToInt32(row.Cells["SoSkinSung"].Value);
             }
         }
     }

@@ -115,5 +115,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameManager.BLL\GameManager.BLL.csproj">
+      <Project>{435d0f2a-62ee-482c-82d5-5b7e039cb2fd}</Project>
+      <Name>GameManager.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameManager.DTO\GameManager.DTO.csproj">
+      <Project>{c5a0a01a-fadb-45b1-9add-accfe85d68a9}</Project>
+      <Name>GameManager.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
