@@ -1,0 +1,16 @@
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\obj\Debug\GameManager.BLL.csproj.AssemblyReference.cache
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\obj\Debug\GameManager.BLL.Properties.Resources.resources
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\obj\Debug\GameManager.BLL.csproj.GenerateResource.cache
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\obj\Debug\GameManager.BLL.csproj.CoreCompileInputs.cache
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\bin\Debug\GameManager.BLL.dll.config
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\bin\Debug\GameManager.BLL.dll
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\bin\Debug\GameManager.BLL.pdb
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\bin\Debug\GameManager.DAL.dll
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\bin\Debug\GameManager.DTO.dll
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\bin\Debug\GameManager.DAL.pdb
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\bin\Debug\GameManager.DAL.dll.config
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\bin\Debug\GameManager.DTO.pdb
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\bin\Debug\GameManager.DTO.dll.config
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\obj\Debug\GameMana.3C585C8D.Up2Date
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\obj\Debug\GameManager.BLL.dll
+D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.BLL\obj\Debug\GameManager.BLL.pdb
