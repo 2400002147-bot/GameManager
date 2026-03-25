@@ -45,7 +45,9 @@ namespace GameManager.GUI
         {
             try
             {
-                dgvFreeFire.DataSource = _gameService.GetAllFreeFire();
+                List<AccountDTO> list = _gameService.GetListData("FreeFireAccounts");
+                dgvFreeFire.DataSource = null;
+                dgvFreeFire.AutoGenerateColumns = true;
             }
             catch (Exception ex)
             {

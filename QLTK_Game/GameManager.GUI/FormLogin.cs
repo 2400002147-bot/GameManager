@@ -16,7 +16,7 @@ namespace GameManager.GUI
     public partial class FormLogin : Form
     {
         // Khởi tạo đối tượng xử lý logic từ tầng BLL
-        private AuthService _authService = new AuthService();
+        GameService _gameService = new GameService();
 
         public FormLogin()
         {
@@ -36,38 +36,21 @@ namespace GameManager.GUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            GameService _gameService = new GameService();
             string user = txtUsername.Text.Trim();
             string pass = txtPassword.Text.Trim();
+            string nameFromDB; 
 
-            // 1. Kiểm tra nhập liệu 
-            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
+            if (_gameService.Login(user, pass, out nameFromDB))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ tài khoản và mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show("Đăng nhập thành công!");
+                this.Hide();
+                FormMain main = new FormMain(nameFromDB);
+                main.Show();
             }
-          try
+            else
             {
-                // 2. Gọi tầng BLL để kiểm tra trong SQL Server
-                if (_authService.CheckLogin(user, pass))
-                {
-                    MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // 3. Mở FormMain 
-                    FormMain mainForm = new FormMain(user);
-                    this.Hide();
-                    mainForm.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtPassword.Clear();
-                    txtPassword.Focus();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi hệ thống: " + ex.Message, "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
             }
         }
 
