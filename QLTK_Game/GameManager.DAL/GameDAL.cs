@@ -1,10 +1,12 @@
-﻿using System;
+﻿using GameManager.DTO;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using GameManager.DTO;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace GameManager.DAL
 {
@@ -17,42 +19,81 @@ namespace GameManager.DAL
         public List<AccountDTO> GetListData(string tableName)
         {
             List<AccountDTO> list = new List<AccountDTO>();
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                string sql = $"SELECT * FROM {tableName}";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                conn.Open();
-                SqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    AccountDTO acc = new AccountDTO();
-                    acc.Id = Convert.ToInt32(rdr["Id"]);
-                    acc.Username = rdr["Username"].ToString();
-                    acc.Password = rdr["Password"].ToString();
-                    acc.LoginType = rdr["LoginType"].ToString();
+                    string sql = $"SELECT * FROM {tableName}";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    conn.Open();
 
-                               if (tableName == "FreeFireAccounts")
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
                     {
-                        acc.ID_InGame = rdr["ID_InGame"].ToString();
-                        acc.LevelAccount = Convert.ToInt32(rdr["LevelAccount"]);
-                        acc.SkinSungHiem = rdr["SkinSungHiem"].ToString();
+                        while (rdr.Read())
+                        {
+                            AccountDTO acc = new AccountDTO();
+
+                            acc.Id = rdr["Id"] != DBNull.Value ? Convert.ToInt32(rdr["Id"]) : 0;
+                            acc.Username = rdr["Username"]?.ToString() ?? "";
+                            acc.Password = rdr["Password"]?.ToString() ?? "";
+                            acc.LoginType = rdr["LoginType"]?.ToString() ?? "";
+
+                            if (tableName == "FreeFireAccounts")
+                            {
+                                acc.ID_InGame = rdr["ID_InGame"]?.ToString() ?? "";
+                                acc.LevelAccount = rdr["LevelAccount"] != DBNull.Value ? Convert.ToInt32(rdr["LevelAccount"]) : 0;
+                                acc.SoSkinSung = rdr["SkinSungHiem"] != DBNull.Value ? Convert.ToInt32(rdr["SkinSungHiem"]) : 0;
+                            }
+                            else if (tableName == "LienQuanAccounts")
+                            {
+                                acc.RankLienQuan = rdr["RankLienQuan"]?.ToString() ?? "";
+                                acc.SoTuong = rdr["SoTuong"] != DBNull.Value ? Convert.ToInt32(rdr["SoTuong"]) : 0;
+                                acc.Skins = rdr["Skins"] != DBNull.Value ? Convert.ToInt32(rdr["Skins"]) : 0;
+                            }
+                            else if (tableName == "FCMobileAccounts")
+                            {
+                                acc.DoiHinh_OVR = rdr["DoiHinh_OVR"] != DBNull.Value ? Convert.ToInt32(rdr["DoiHinh_OVR"]) : 0;
+                                acc.GiaTriDoiHinh = rdr["GiaTriDoiHinh"] != DBNull.Value ? Convert.ToInt64(rdr["GiaTriDoiHinh"]) : 0;
+                                acc.Region = rdr["Region"]?.ToString() ?? "";
+                            }
+                            list.Add(acc);
+                        }
                     }
-                    else if (tableName == "LienQuanAccounts")
-                    {
-                        acc.RankLienQuan = rdr["RankLienQuan"].ToString();
-                        acc.SoTuong = Convert.ToInt32(rdr["SoTuong"]);
-                        acc.Skins = Convert.ToInt32(rdr["Skins"]);
-                    }
-                    else if (tableName == "FCMobileAccounts")
-                    {
-                        acc.DoiHinh_OVR = Convert.ToInt32(rdr["DoiHinh_OVR"]);
-                        acc.GiaTriDoiHinh = Convert.ToInt64(rdr["GiaTriDoiHinh"]); // BIGINT
-                        acc.Region = rdr["Region"].ToString();
-                    }
-                    list.Add(acc);
                 }
             }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Lỗi lấy dữ liệu: " + ex.Message);
+            }
             return list;
+        }
+        public bool CheckLogin(string user, string pass, out string displayName)
+        {
+            displayName = "";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string sql = "SELECT DisplayName FROM Users WHERE Username = @u AND Password = @p";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@u", user);
+                    cmd.Parameters.AddWithValue("@p", pass);
+
+                    conn.Open();
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        displayName = result.ToString(); 
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         // Thêm, Update tài khoản Free Fire 
@@ -68,7 +109,7 @@ namespace GameManager.DAL
                 cmd.Parameters.AddWithValue("@t", acc.LoginType);
                 cmd.Parameters.AddWithValue("@id", acc.ID_InGame);
                 cmd.Parameters.AddWithValue("@lv", acc.LevelAccount);
-                cmd.Parameters.AddWithValue("@s", acc.SkinSungHiem ?? "");
+                cmd.Parameters.AddWithValue("@s", acc.SoSkinSung);
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -85,7 +126,7 @@ namespace GameManager.DAL
                 cmd.Parameters.AddWithValue("@t", acc.LoginType);
                 cmd.Parameters.AddWithValue("@id", acc.ID_InGame);
                 cmd.Parameters.AddWithValue("@lv", acc.LevelAccount);
-                cmd.Parameters.AddWithValue("@s", acc.SkinSungHiem ?? "");
+                cmd.Parameters.AddWithValue("@s", acc.SoSkinSung);
                 cmd.Parameters.AddWithValue("@idAcc", acc.Id);
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;

@@ -14,11 +14,18 @@ namespace GameManager.BLL
         private GameDAL _dal = new GameDAL();
 
         //  FREE FIRE 
-        public List<AccountDTO> GetAllFreeFire()
+        public List<AccountDTO> GetListData(string tableName)
         {
-            return _dal.GetListData("FreeFireAccounts");
+            return _dal.GetListData(tableName);
         }
+        public bool Login(string user, string pass, out string displayName)
+        {
+            displayName = "";
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
+                return false;
 
+            return _dal.CheckLogin(user, pass, out displayName);
+        }
         public bool AddFreeFire(AccountDTO acc)
         {
             return _dal.InsertFreeFire(acc);
