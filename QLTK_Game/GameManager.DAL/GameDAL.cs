@@ -13,12 +13,13 @@ namespace GameManager.DAL
     public class GameDAL
     {
         // Kết nối DB
-        private string connectionString = "Server=.;Database=GameDB;Trusted_Connection=True;TrustServerCertificate=True;";
+        private string connectionString = "Server=.;Database=GameDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
 
         // Lấy danh sách
         public List<AccountDTO> GetListData(string tableName)
         {
             List<AccountDTO> list = new List<AccountDTO>();
+            string tableLower = tableName.ToLower();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -38,7 +39,7 @@ namespace GameManager.DAL
                             acc.Password = rdr["Password"]?.ToString() ?? "";
                             acc.LoginType = rdr["LoginType"]?.ToString() ?? "";
 
-                            if (tableName == "FreeFireAccounts")
+                            if (tableLower == "freefireaccounts")
                             {
                                 acc.ID_InGame = rdr["ID_InGame"]?.ToString() ?? "";
                                 acc.LevelAccount = rdr["LevelAccount"] != DBNull.Value ? Convert.ToInt32(rdr["LevelAccount"]) : 0;
