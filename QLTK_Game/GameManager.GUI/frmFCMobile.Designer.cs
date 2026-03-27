@@ -206,6 +206,7 @@
             this.Controls.Add(this.lblUser);
             this.Name = "frmFCMobile";
             this.Text = "Quản lý tài khoản FC Mobile";
+            this.Load += new System.EventHandler(this.frmFCMobile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numOVR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFCMobile)).EndInit();
             this.ResumeLayout(false);

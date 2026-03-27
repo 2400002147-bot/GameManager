@@ -21,8 +21,8 @@ namespace GameManager.DTO
 
         // Thuộc tính riêng của Free Fire 
         public string ID_InGame { get; set; }
-        public int SoSkinSung { get; set; }
         public int LevelAccount { get; set; }
+        public int SoSkinSung { get; set; }
 
         // Thuộc tính riêng của FC Mobile
         public int DoiHinh_OVR { get; set; }

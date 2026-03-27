@@ -4,23 +4,24 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using GameManager.BLL; 
+using GameManager.BLL;
 using GameManager.DTO;
-
+using System.Data.SqlClient;
 
 namespace GameManager.GUI
 {
     public partial class frmFreeFire : Form
     {
-        // Khởi tạo dịch vụ từ tầng BLL
         private GameService _gameService = new GameService();
 
         public frmFreeFire()
         {
             InitializeComponent();
+            // Mẹo: Giúp bảng chọn cả dòng khi click
+            dgvFreeFire.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvFreeFire.MultiSelect = false;
+            dgvFreeFire.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void frmFreeFire_Load(object sender, EventArgs e)
@@ -29,38 +30,60 @@ namespace GameManager.GUI
             LoadData();
         }
 
-        // 1.Đưa dữ liệu vào ComboBox 
         private void LoadComboBox()
         {
             cboLoginType.Items.Clear();
-            cboLoginType.Items.Add("Facebook");
-            cboLoginType.Items.Add("Google");
-            cboLoginType.Items.Add("Garena");
-            cboLoginType.Items.Add("VK");
-            cboLoginType.SelectedIndex = 0; 
+            cboLoginType.Items.AddRange(new string[] { "Facebook", "Google", "Garena", "VK" });
+            if (cboLoginType.Items.Count > 0) cboLoginType.SelectedIndex = 0;
         }
 
-        // 2. Tải dữ liệu từ SQL Server lên DataGridView
         private void LoadData()
         {
             try
             {
                 List<AccountDTO> list = _gameService.GetListData("FreeFireAccounts");
+
+                // Reset bảng trước khi nạp
                 dgvFreeFire.DataSource = null;
-                dgvFreeFire.AutoGenerateColumns = true;
+                dgvFreeFire.Columns.Clear();
+
+                if (list != null && list.Count > 0)
+                {
+                    dgvFreeFire.AutoGenerateColumns = true;
+                    dgvFreeFire.DataSource = new BindingList<AccountDTO>(list);
+
+                    // 1. Đặt tiêu đề tiếng Việt
+                    if (dgvFreeFire.Columns["Username"] != null) dgvFreeFire.Columns["Username"].HeaderText = "Tài khoản";
+                    if (dgvFreeFire.Columns["LoginType"] != null) dgvFreeFire.Columns["LoginType"].HeaderText = "Loại đăng nhập";
+                    if (dgvFreeFire.Columns["ID_InGame"] != null) dgvFreeFire.Columns["ID_InGame"].HeaderText = "ID In-game";
+                    if (dgvFreeFire.Columns["LevelAccount"] != null) dgvFreeFire.Columns["LevelAccount"].HeaderText = "Cấp độ";
+                    if (dgvFreeFire.Columns["SoSkinSung"] != null) dgvFreeFire.Columns["SoSkinSung"].HeaderText = "Số Skin súng";
+
+                    // 2. Ẩn các cột rác (của game khác)
+                    string[] hideCols = { "Id", "Password", "RankLienQuan", "SoTuong", "Skins", "DoiHinh_OVR", "GiaTriDoiHinh", "Region", "GameCategory" };
+                    foreach (string colName in hideCols)
+                    {
+                        if (dgvFreeFire.Columns[colName] != null)
+                            dgvFreeFire.Columns[colName].Visible = false;
+                    }
+                }
+                else
+                {
+                    // Nếu không có dữ liệu, bảng sẽ trống xám. 
+                    // Bạn có thể thêm 1 dòng Label báo "Chưa có dữ liệu" ở đây.
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message);
+                MessageBox.Show("Lỗi hiển thị: " + ex.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // 3. Nút THÊM
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUser.Text))
+            if (string.IsNullOrWhiteSpace(txtUser.Text))
             {
-                MessageBox.Show("Vui lòng nhập tài khoản!");
+                MessageBox.Show("Vui lòng nhập tài khoản!", "Nhắc nhở");
                 return;
             }
 
@@ -68,7 +91,7 @@ namespace GameManager.GUI
             {
                 Username = txtUser.Text.Trim(),
                 Password = txtPass.Text.Trim(),
-                LoginType = cboLoginType.SelectedItem.ToString(),
+                LoginType = cboLoginType.Text, // Dùng .Text an toàn hơn
                 ID_InGame = txtIDInGame.Text.Trim(),
                 LevelAccount = (int)numLevel.Value,
                 SoSkinSung = (int)numSoSkin.Value
@@ -82,17 +105,21 @@ namespace GameManager.GUI
             }
         }
 
-        // 4. Nút SỬA
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (dgvFreeFire.CurrentRow == null) return;
+            var selectedAcc = dgvFreeFire.CurrentRow?.DataBoundItem as AccountDTO;
+            if (selectedAcc == null)
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để sửa!");
+                return;
+            }
 
             AccountDTO acc = new AccountDTO
             {
-                Id = Convert.ToInt32(dgvFreeFire.CurrentRow.Cells["Id"].Value),
+                Id = selectedAcc.Id, // Lấy ID ẩn từ DB
                 Username = txtUser.Text.Trim(),
                 Password = txtPass.Text.Trim(),
-                LoginType = cboLoginType.SelectedItem.ToString(),
+                LoginType = cboLoginType.Text,
                 ID_InGame = txtIDInGame.Text.Trim(),
                 LevelAccount = (int)numLevel.Value,
                 SoSkinSung = (int)numSoSkin.Value
@@ -105,47 +132,49 @@ namespace GameManager.GUI
             }
         }
 
-        // 5. Nút XÓA
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (dgvFreeFire.CurrentRow == null) return;
+            var selectedAcc = dgvFreeFire.CurrentRow?.DataBoundItem as AccountDTO;
+            if (selectedAcc == null) return;
 
-            int id = Convert.ToInt32(dgvFreeFire.CurrentRow.Cells["Id"].Value);
-            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
-
-            if (dr == DialogResult.Yes)
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa tài khoản này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (_gameService.DeleteFreeFire(id))
+                if (_gameService.DeleteFreeFire(selectedAcc.Id))
                 {
                     LoadData();
+                    btnLamMoi.PerformClick();
                 }
             }
         }
 
-        // 6. Nút LÀM MỚI
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             txtUser.Clear();
             txtPass.Clear();
             txtIDInGame.Clear();
-            numLevel.Value = 0;
-            cboLoginType.SelectedIndex = 0;
+            numLevel.Value = numLevel.Minimum;
+            numSoSkin.Value = numSoSkin.Minimum;
+            if (cboLoginType.Items.Count > 0) cboLoginType.SelectedIndex = 0;
             txtUser.Focus();
         }
 
-        // 7. Click vào bảng để hiển thị lên các ô nhập
-        private void dgvFreeFire_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvFreeFire_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgvFreeFire.Rows[e.RowIndex];
-                txtUser.Text = row.Cells["Username"].Value.ToString();
-                txtPass.Text = row.Cells["Password"].Value.ToString();
-                cboLoginType.SelectedItem = row.Cells["LoginType"].Value.ToString();
-                txtIDInGame.Text = row.Cells["ID_InGame"].Value.ToString();
-                numLevel.Value = Convert.ToInt32(row.Cells["LevelAccount"].Value);
-                numSoSkin.Value = Convert.ToInt32(row.Cells["SoSkinSung"].Value);
+                var acc = dgvFreeFire.Rows[e.RowIndex].DataBoundItem as AccountDTO;
+                if (acc != null)
+                {
+                    txtUser.Text = acc.Username;
+                    txtPass.Text = acc.Password;
+                    cboLoginType.Text = acc.LoginType;
+                    txtIDInGame.Text = acc.ID_InGame;
+                    numLevel.Value = Math.Max(numLevel.Minimum, Math.Min(numLevel.Maximum, acc.LevelAccount));
+                    numSoSkin.Value = Math.Max(numSoSkin.Minimum, Math.Min(numSoSkin.Maximum, acc.SoSkinSung));
+                }
             }
         }
+
+      
     }
 }

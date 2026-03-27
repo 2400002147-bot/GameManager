@@ -216,6 +216,7 @@
             this.Controls.Add(this.dgvLienQuan);
             this.Name = "frmLienQuan";
             this.Text = "Quản lý tài khoản Liên Quân";
+            this.Load += new System.EventHandler(this.frmLienQuan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSoTuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSkins)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLienQuan)).EndInit();

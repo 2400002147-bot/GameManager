@@ -30,11 +30,11 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
-            this.dgvFreeFire = new System.Windows.Forms.DataGridView();
             this.numSoSkin = new System.Windows.Forms.NumericUpDown();
+            this.dgvFreeFire = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFreeFire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSoSkin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFreeFire)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUser
@@ -167,16 +167,6 @@
             this.btnLamMoi.TabIndex = 15;
             this.btnLamMoi.Text = "Làm mới";
             // 
-            // dgvFreeFire
-            // 
-            this.dgvFreeFire.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFreeFire.ColumnHeadersHeight = 29;
-            this.dgvFreeFire.Location = new System.Drawing.Point(33, 228);
-            this.dgvFreeFire.Name = "dgvFreeFire";
-            this.dgvFreeFire.RowHeadersWidth = 51;
-            this.dgvFreeFire.Size = new System.Drawing.Size(898, 273);
-            this.dgvFreeFire.TabIndex = 16;
-            // 
             // numSoSkin
             // 
             this.numSoSkin.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -200,9 +190,21 @@
             0,
             0});
             // 
+            // dgvFreeFire
+            // 
+            this.dgvFreeFire.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFreeFire.Location = new System.Drawing.Point(43, 227);
+            this.dgvFreeFire.Name = "dgvFreeFire";
+            this.dgvFreeFire.RowHeadersWidth = 51;
+            this.dgvFreeFire.RowTemplate.Height = 24;
+            this.dgvFreeFire.Size = new System.Drawing.Size(877, 293);
+            this.dgvFreeFire.TabIndex = 18;
+            this.dgvFreeFire.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFreeFire_CellClick_1);
+            // 
             // frmFreeFire
             // 
             this.ClientSize = new System.Drawing.Size(958, 532);
+            this.Controls.Add(this.dgvFreeFire);
             this.Controls.Add(this.numSoSkin);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.txtUser);
@@ -219,12 +221,12 @@
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnLamMoi);
-            this.Controls.Add(this.dgvFreeFire);
             this.Name = "frmFreeFire";
             this.Text = "Quản lý tài khoản Free Fire";
+            this.Load += new System.EventHandler(this.frmFreeFire_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numLevel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFreeFire)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSoSkin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFreeFire)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,7 +237,7 @@
         private System.Windows.Forms.ComboBox cboLoginType;
         private System.Windows.Forms.NumericUpDown numLevel;
         private System.Windows.Forms.Button btnThem, btnSua, btnXoa, btnLamMoi;
-        private System.Windows.Forms.DataGridView dgvFreeFire;
         private System.Windows.Forms.NumericUpDown numSoSkin;
+        private System.Windows.Forms.DataGridView dgvFreeFire;
     }
 }
