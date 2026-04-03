@@ -1,9 +1,0 @@
-D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.DTO\obj\Debug\GameManager.DTO.csproj.AssemblyReference.cache
-D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.DTO\obj\Debug\GameManager.DTO.Properties.Resources.resources
-D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.DTO\obj\Debug\GameManager.DTO.csproj.GenerateResource.cache
-D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.DTO\obj\Debug\GameManager.DTO.csproj.CoreCompileInputs.cache
-D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.DTO\bin\Debug\GameManager.DTO.dll.config
-D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.DTO\bin\Debug\GameManager.DTO.dll
-D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.DTO\bin\Debug\GameManager.DTO.pdb
-D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.DTO\obj\Debug\GameManager.DTO.dll
-D:\0 HỌC\Lập trình ứng dụng\QLTK_Game\GameManager.DTO\obj\Debug\GameManager.DTO.pdb
