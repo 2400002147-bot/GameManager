@@ -52,14 +52,13 @@ namespace GameManager.GUI
                     dgvFreeFire.AutoGenerateColumns = true;
                     dgvFreeFire.DataSource = new BindingList<AccountDTO>(list);
 
-                    // 1. Đặt tiêu đề tiếng Việt
                     if (dgvFreeFire.Columns["Username"] != null) dgvFreeFire.Columns["Username"].HeaderText = "Tài khoản";
                     if (dgvFreeFire.Columns["LoginType"] != null) dgvFreeFire.Columns["LoginType"].HeaderText = "Loại đăng nhập";
                     if (dgvFreeFire.Columns["ID_InGame"] != null) dgvFreeFire.Columns["ID_InGame"].HeaderText = "ID In-game";
                     if (dgvFreeFire.Columns["LevelAccount"] != null) dgvFreeFire.Columns["LevelAccount"].HeaderText = "Cấp độ";
                     if (dgvFreeFire.Columns["SoSkinSung"] != null) dgvFreeFire.Columns["SoSkinSung"].HeaderText = "Số Skin súng";
 
-                    // 2. Ẩn các cột rác (của game khác)
+                    // Ẩn các cột của game khác)
                     string[] hideCols = { "Id", "Password", "RankLienQuan", "SoTuong", "Skins", "DoiHinh_OVR", "GiaTriDoiHinh", "Region", "GameCategory" };
                     foreach (string colName in hideCols)
                     {
@@ -69,7 +68,6 @@ namespace GameManager.GUI
                 }
                 else
                 {
-                    // Nếu không có dữ liệu, bảng sẽ trống xám. 
                     // Bạn có thể thêm 1 dòng Label báo "Chưa có dữ liệu" ở đây.
                 }
             }
@@ -158,7 +156,7 @@ namespace GameManager.GUI
             txtUser.Focus();
         }
 
-        private void dgvFreeFire_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dgvFreeFire_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -175,6 +173,17 @@ namespace GameManager.GUI
             }
         }
 
-      
+        private void chkShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowPass.Checked)
+            {
+                txtPass.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPass.UseSystemPasswordChar = true;
+            }
+        }
+
     }
 }

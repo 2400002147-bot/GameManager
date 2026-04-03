@@ -44,12 +44,34 @@ namespace GameManager.GUI
         {
             try
             {
-                dgvFCMobile.DataSource = _gameService.GetAllFCMobile();
+                // Gọi Service lấy danh sách FC Mobile
+                List<AccountDTO> list = _gameService.GetAllFCMobile();
+
+                dgvFCMobile.DataSource = null;
+                dgvFCMobile.Columns.Clear();
+                dgvFCMobile.AutoGenerateColumns = true;
+
+                if (list != null && list.Count > 0)
+                {
+                    dgvFCMobile.DataSource = new BindingList<AccountDTO>(list);
+
+                    //Đổi tiêu đề cột
+                    if (dgvFCMobile.Columns["DoiHinh_OVR"] != null) dgvFCMobile.Columns["DoiHinh_OVR"].HeaderText = "Chỉ số OVR";
+                    if (dgvFCMobile.Columns["GiaTriDoiHinh"] != null) dgvFCMobile.Columns["GiaTriDoiHinh"].HeaderText = "Giá trị (Coin)";
+                    if (dgvFCMobile.Columns["Region"] != null) dgvFCMobile.Columns["Region"].HeaderText = "Khu vực";
+
+                    // Ẩn các cột của game khác
+                    string[] hideCols = {
+                "Id", "Password", "RankLienQuan", "SoTuong", "Skins",
+                "ID_InGame", "LevelAccount", "SoSkinSung", "GameCategory"
+            };
+                    foreach (string col in hideCols)
+                    {
+                        if (dgvFCMobile.Columns[col] != null) dgvFCMobile.Columns[col].Visible = false;
+                    }
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Lỗi: " + ex.Message); }
         }
         // nút thêm
         private void btnThem_Click(object sender, EventArgs e)
@@ -125,13 +147,31 @@ namespace GameManager.GUI
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgvFCMobile.Rows[e.RowIndex];
-                txtUser.Text = row.Cells["Username"].Value.ToString();
-                txtPass.Text = row.Cells["Password"].Value.ToString();
-                cboLoginType.SelectedItem = row.Cells["LoginType"].Value.ToString();
-                numOVR.Value = Convert.ToInt32(row.Cells["DoiHinh_OVR"].Value);
-                txtGiaTri.Text = row.Cells["GiaTriDoiHinh"].Value.ToString();
-                cboRegion.SelectedItem = row.Cells["Region"].Value.ToString();
+                var acc = dgvFCMobile.Rows[e.RowIndex].DataBoundItem as AccountDTO;
+
+                if (acc != null)
+                {
+                    txtUser.Text = acc.Username ?? "";
+                    txtPass.Text = acc.Password ?? "";
+                    cboLoginType.Text = acc.LoginType ?? "";
+                    numOVR.Value = acc.DoiHinh_OVR;
+                    txtGiaTri.Text = acc.GiaTriDoiHinh.ToString();
+                    cboRegion.Text = acc.Region ?? "";
+                }
+            }
+        }
+
+        private void chkShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowPass.Checked)
+            {
+                // Hiện chữ bình thường
+                txtPass.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                // Hiện dấu * hoặc dấu chấm
+                txtPass.UseSystemPasswordChar = true;
             }
         }
     }

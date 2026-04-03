@@ -15,6 +15,7 @@
 
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblUser = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.lblPass = new System.Windows.Forms.Label();
@@ -32,6 +33,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.dgvLienQuan = new System.Windows.Forms.DataGridView();
+            this.chkShowPass = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numSoTuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLienQuan)).BeginInit();
@@ -39,7 +42,7 @@
             // 
             // lblUser
             // 
-            this.lblUser.Location = new System.Drawing.Point(88, 31);
+            this.lblUser.Location = new System.Drawing.Point(80, 88);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(100, 23);
             this.lblUser.TabIndex = 0;
@@ -47,14 +50,14 @@
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(194, 28);
+            this.txtUser.Location = new System.Drawing.Point(186, 85);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(228, 22);
             this.txtUser.TabIndex = 1;
             // 
             // lblPass
             // 
-            this.lblPass.Location = new System.Drawing.Point(88, 66);
+            this.lblPass.Location = new System.Drawing.Point(80, 123);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(100, 23);
             this.lblPass.TabIndex = 2;
@@ -62,7 +65,7 @@
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(194, 64);
+            this.txtPass.Location = new System.Drawing.Point(186, 121);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(228, 22);
             this.txtPass.TabIndex = 3;
@@ -70,7 +73,7 @@
             // 
             // lblLoginType
             // 
-            this.lblLoginType.Location = new System.Drawing.Point(88, 98);
+            this.lblLoginType.Location = new System.Drawing.Point(80, 155);
             this.lblLoginType.Name = "lblLoginType";
             this.lblLoginType.Size = new System.Drawing.Size(153, 23);
             this.lblLoginType.TabIndex = 4;
@@ -82,14 +85,14 @@
             "Garena",
             "Facebook",
             "Google"});
-            this.cboLoginType.Location = new System.Drawing.Point(247, 95);
+            this.cboLoginType.Location = new System.Drawing.Point(239, 152);
             this.cboLoginType.Name = "cboLoginType";
             this.cboLoginType.Size = new System.Drawing.Size(175, 24);
             this.cboLoginType.TabIndex = 5;
             // 
             // lblRank
             // 
-            this.lblRank.Location = new System.Drawing.Point(553, 34);
+            this.lblRank.Location = new System.Drawing.Point(545, 91);
             this.lblRank.Name = "lblRank";
             this.lblRank.Size = new System.Drawing.Size(100, 23);
             this.lblRank.TabIndex = 6;
@@ -107,14 +110,14 @@
             "Tinh Anh",
             "Cao Thủ",
             "Chiến Tướng"});
-            this.cboRank.Location = new System.Drawing.Point(653, 31);
+            this.cboRank.Location = new System.Drawing.Point(645, 88);
             this.cboRank.Name = "cboRank";
             this.cboRank.Size = new System.Drawing.Size(250, 24);
             this.cboRank.TabIndex = 7;
             // 
             // lblSoTuong
             // 
-            this.lblSoTuong.Location = new System.Drawing.Point(553, 69);
+            this.lblSoTuong.Location = new System.Drawing.Point(545, 126);
             this.lblSoTuong.Name = "lblSoTuong";
             this.lblSoTuong.Size = new System.Drawing.Size(81, 23);
             this.lblSoTuong.TabIndex = 8;
@@ -122,7 +125,7 @@
             // 
             // numSoTuong
             // 
-            this.numSoTuong.Location = new System.Drawing.Point(653, 66);
+            this.numSoTuong.Location = new System.Drawing.Point(645, 123);
             this.numSoTuong.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -134,7 +137,7 @@
             // 
             // lblSkins
             // 
-            this.lblSkins.Location = new System.Drawing.Point(553, 104);
+            this.lblSkins.Location = new System.Drawing.Point(545, 161);
             this.lblSkins.Name = "lblSkins";
             this.lblSkins.Size = new System.Drawing.Size(100, 23);
             this.lblSkins.TabIndex = 10;
@@ -142,7 +145,7 @@
             // 
             // numSkins
             // 
-            this.numSkins.Location = new System.Drawing.Point(653, 101);
+            this.numSkins.Location = new System.Drawing.Point(645, 158);
             this.numSkins.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -154,49 +157,88 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(247, 173);
+            this.btnThem.Location = new System.Drawing.Point(248, 210);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 30);
             this.btnThem.TabIndex = 12;
             this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(347, 173);
+            this.btnSua.Location = new System.Drawing.Point(348, 210);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 30);
             this.btnSua.TabIndex = 13;
             this.btnSua.Text = "Sửa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(447, 173);
+            this.btnXoa.Location = new System.Drawing.Point(448, 210);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 30);
             this.btnXoa.TabIndex = 14;
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnLamMoi
             // 
-            this.btnLamMoi.Location = new System.Drawing.Point(547, 173);
+            this.btnLamMoi.Location = new System.Drawing.Point(548, 210);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(75, 30);
             this.btnLamMoi.TabIndex = 15;
             this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // dgvLienQuan
             // 
             this.dgvLienQuan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLienQuan.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvLienQuan.ColumnHeadersHeight = 29;
-            this.dgvLienQuan.Location = new System.Drawing.Point(33, 228);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLienQuan.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvLienQuan.Location = new System.Drawing.Point(31, 267);
             this.dgvLienQuan.Name = "dgvLienQuan";
             this.dgvLienQuan.RowHeadersWidth = 51;
             this.dgvLienQuan.Size = new System.Drawing.Size(898, 273);
             this.dgvLienQuan.TabIndex = 16;
+            this.dgvLienQuan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLienQuan_CellClick);
+            // 
+            // chkShowPass
+            // 
+            this.chkShowPass.AutoSize = true;
+            this.chkShowPass.Location = new System.Drawing.Point(421, 126);
+            this.chkShowPass.Name = "chkShowPass";
+            this.chkShowPass.Size = new System.Drawing.Size(62, 20);
+            this.chkShowPass.TabIndex = 17;
+            this.chkShowPass.Text = "Show";
+            this.chkShowPass.UseVisualStyleBackColor = true;
+            this.chkShowPass.CheckedChanged += new System.EventHandler(this.chkShowPass_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Showcard Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label1.Location = new System.Drawing.Point(332, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(313, 37);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "LIÊN QUÂN MANAGER";
             // 
             // frmLienQuan
             // 
-            this.ClientSize = new System.Drawing.Size(958, 532);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
+            this.ClientSize = new System.Drawing.Size(958, 552);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.chkShowPass);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.lblPass);
@@ -214,6 +256,7 @@
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.dgvLienQuan);
+            this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Name = "frmLienQuan";
             this.Text = "Quản lý tài khoản Liên Quân";
             this.Load += new System.EventHandler(this.frmLienQuan_Load);
@@ -231,5 +274,7 @@
         private System.Windows.Forms.NumericUpDown numSoTuong, numSkins;
         private System.Windows.Forms.Button btnThem, btnSua, btnXoa, btnLamMoi;
         private System.Windows.Forms.DataGridView dgvLienQuan;
+        private System.Windows.Forms.CheckBox chkShowPass;
+        private System.Windows.Forms.Label label1;
     }
 }

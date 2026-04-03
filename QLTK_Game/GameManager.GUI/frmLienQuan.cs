@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -50,13 +51,31 @@ namespace GameManager.GUI
         {
             try
             {
-                // Gọi BLL lấy dữ liệu từ bảng LienQuanAccounts
-                dgvLienQuan.DataSource = _gameService.GetAllLienQuan();
+                // Gọi Service lấy danh sách Liên Quân
+                List<AccountDTO> list = _gameService.GetAllLienQuan();
+
+                dgvLienQuan.DataSource = null;
+                dgvLienQuan.Columns.Clear();
+                dgvLienQuan.AutoGenerateColumns = true;
+
+                if (list != null && list.Count > 0)
+                {
+                    dgvLienQuan.DataSource = new BindingList<AccountDTO>(list);
+
+                    if (dgvLienQuan.Columns["Username"] != null) dgvLienQuan.Columns["Username"].HeaderText = "Tài khoản";
+                    if (dgvLienQuan.Columns["RankLienQuan"] != null) dgvLienQuan.Columns["RankLienQuan"].HeaderText = "Bậc Hạng";
+                    if (dgvLienQuan.Columns["SoTuong"] != null) dgvLienQuan.Columns["SoTuong"].HeaderText = "Số Tướng";
+                    if (dgvLienQuan.Columns["Skins"] != null) dgvLienQuan.Columns["Skins"].HeaderText = "Số Trang Phục";
+
+                    // Ẩn các cột của game khác
+                    string[] hideCols = {"Id", "Password", "ID_InGame", "LevelAccount", "SoSkinSung","DoiHinh_OVR", "GiaTriDoiHinh", "Region", "GameCategory" };
+                    foreach (string col in hideCols)
+                    {
+                        if (dgvLienQuan.Columns[col] != null) dgvLienQuan.Columns[col].Visible = false;
+                    }
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Thông báo");
-            }
+            catch (Exception ex) { MessageBox.Show("Lỗi: " + ex.Message); }
         }
 
         // 3. nút THÊM
@@ -144,13 +163,31 @@ namespace GameManager.GUI
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgvLienQuan.Rows[e.RowIndex];
-                txtUser.Text = row.Cells["Username"].Value.ToString();
-                txtPass.Text = row.Cells["Password"].Value.ToString();
-                cboLoginType.SelectedItem = row.Cells["LoginType"].Value.ToString();
-                cboRank.SelectedItem = row.Cells["RankLienQuan"].Value.ToString();
-                numSoTuong.Value = Convert.ToInt32(row.Cells["SoTuong"].Value);
-                numSkins.Value = Convert.ToInt32(row.Cells["Skins"].Value);
+                var acc = dgvLienQuan.Rows[e.RowIndex].DataBoundItem as AccountDTO;
+
+                if (acc != null)
+                {
+                    txtUser.Text = acc.Username ?? "";
+                    txtPass.Text = acc.Password ?? "";
+                    cboLoginType.Text = acc.LoginType ?? "";
+                    cboRank.Text = acc.RankLienQuan ?? "";
+                    numSoTuong.Value = acc.SoTuong;
+                    numSkins.Value = acc.Skins;
+                }
+            }
+        }
+
+        private void chkShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowPass.Checked)
+            {
+                // Hiện chữ bình thường
+                txtPass.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                // Hiện dấu * hoặc dấu chấm
+                txtPass.UseSystemPasswordChar = true;
             }
         }
     }
