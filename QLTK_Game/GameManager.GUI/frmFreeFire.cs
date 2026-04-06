@@ -1,13 +1,16 @@
-﻿using System;
+﻿using GameManager.BLL;
+using GameManager.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using GameManager.BLL;
-using GameManager.DTO;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace GameManager.GUI
 {
@@ -185,5 +188,53 @@ namespace GameManager.GUI
             }
         }
 
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+            try
+            {
+                // 1. Lấy thư mục hiện tại (...bin\Debug)
+                string currentDir = AppDomain.CurrentDomain.BaseDirectory;
+                DirectoryInfo di = new DirectoryInfo(currentDir);
+
+                // 2. LÙI 3 LẦN: 
+                // Lần 1: ra khỏi Debug
+                // Lần 2: ra khỏi bin
+                // Lần 3: ra khỏi GameManager.GUI để tới QLTK_Game
+                string rootPath = di.Parent.Parent.Parent.FullName;
+
+                // 3. Ghép với tên file
+                string fullPath = Path.Combine(rootPath, "FreeFireFake.exe");
+
+                if (File.Exists(fullPath))
+                {
+                    Process.Start(fullPath);
+                    Thread.Sleep(4000);
+                    SendKeys.SendWait(txtUser.Text);
+                    Thread.Sleep(500);
+
+                    SendKeys.SendWait("{TAB}");
+                    Thread.Sleep(300);
+                    SendKeys.SendWait("{TAB}");
+                    Thread.Sleep(300);
+
+                    SendKeys.SendWait(txtPass.Text);
+                    Thread.Sleep(300);
+                    SendKeys.SendWait("{TAB}");
+                    Thread.Sleep(300);
+                    SendKeys.SendWait("{TAB}");
+                    Thread.Sleep(300);
+                    SendKeys.SendWait("{ENTER}");
+                }
+                else
+                {
+                    MessageBox.Show("Không thấy file");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
     }
 }

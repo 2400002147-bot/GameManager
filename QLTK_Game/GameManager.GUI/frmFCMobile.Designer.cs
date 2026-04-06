@@ -35,6 +35,7 @@
             this.dgvFCMobile = new System.Windows.Forms.DataGridView();
             this.chkShowPass = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnDangNhap = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numOVR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFCMobile)).BeginInit();
             this.SuspendLayout();
@@ -189,7 +190,7 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -223,10 +224,20 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "FC MOBILE MANAGER";
             // 
+            // btnDangNhap
+            // 
+            this.btnDangNhap.Location = new System.Drawing.Point(654, 203);
+            this.btnDangNhap.Name = "btnDangNhap";
+            this.btnDangNhap.Size = new System.Drawing.Size(100, 30);
+            this.btnDangNhap.TabIndex = 22;
+            this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+            // 
             // frmFCMobile
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.ClientSize = new System.Drawing.Size(958, 547);
+            this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkShowPass);
             this.Controls.Add(this.dgvFCMobile);
@@ -267,5 +278,6 @@
         private System.Windows.Forms.DataGridView dgvFCMobile;
         private System.Windows.Forms.CheckBox chkShowPass;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnDangNhap;
     }
 }

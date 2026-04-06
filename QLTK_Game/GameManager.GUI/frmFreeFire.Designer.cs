@@ -35,6 +35,7 @@
             this.dgvFreeFire = new System.Windows.Forms.DataGridView();
             this.chkShowPass = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnDangNhap = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSoSkin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFreeFire)).BeginInit();
@@ -240,10 +241,20 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "FREE FIRE MANAGER";
             // 
+            // btnDangNhap
+            // 
+            this.btnDangNhap.Location = new System.Drawing.Point(654, 216);
+            this.btnDangNhap.Name = "btnDangNhap";
+            this.btnDangNhap.Size = new System.Drawing.Size(100, 30);
+            this.btnDangNhap.TabIndex = 23;
+            this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+            // 
             // frmFreeFire
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.ClientSize = new System.Drawing.Size(958, 550);
+            this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkShowPass);
             this.Controls.Add(this.dgvFreeFire);
@@ -286,5 +297,6 @@
         private System.Windows.Forms.DataGridView dgvFreeFire;
         private System.Windows.Forms.CheckBox chkShowPass;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnDangNhap;
     }
 }
