@@ -38,7 +38,7 @@ namespace GameManager.DAL
                             acc.Username = rdr["Username"]?.ToString() ?? "";
                             acc.Password = rdr["Password"]?.ToString() ?? "";
                             acc.LoginType = rdr["LoginType"]?.ToString() ?? "";
-
+                            acc.Note = rdr["Note"]?.ToString() ?? "";
                             if (tableLower == "freefireaccounts")
                             {
                                 acc.ID_InGame = rdr["ID_InGame"]?.ToString() ?? "";
@@ -102,8 +102,8 @@ namespace GameManager.DAL
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sql = "INSERT INTO FreeFireAccounts (Username, Password, LoginType, ID_InGame, LevelAccount, SkinSungHiem) " +
-                             "VALUES (@u, @p, @t, @id, @lv, @s)";
+                string sql = "INSERT INTO FreeFireAccounts (Username, Password, LoginType, ID_InGame, LevelAccount, SkinSungHiem, Note) " +
+                             "VALUES (@u, @p, @t, @id, @lv, @s, @n)";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@u", acc.Username);
                 cmd.Parameters.AddWithValue("@p", acc.Password);
@@ -111,6 +111,7 @@ namespace GameManager.DAL
                 cmd.Parameters.AddWithValue("@id", acc.ID_InGame);
                 cmd.Parameters.AddWithValue("@lv", acc.LevelAccount);
                 cmd.Parameters.AddWithValue("@s", acc.SoSkinSung);
+                cmd.Parameters.AddWithValue("@n", (object)acc.Note ?? DBNull.Value);
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -120,7 +121,7 @@ namespace GameManager.DAL
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string sql = "UPDATE FreeFireAccounts SET Username=@u, Password=@p, LoginType=@t, " +
-                             "ID_InGame=@id, LevelAccount=@lv, SkinSungHiem=@s WHERE Id=@idAcc";
+                             "ID_InGame=@id, LevelAccount=@lv, SkinSungHiem=@s, Note=@n WHERE Id=@idAcc";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@u", acc.Username);
                 cmd.Parameters.AddWithValue("@p", acc.Password);
@@ -129,6 +130,7 @@ namespace GameManager.DAL
                 cmd.Parameters.AddWithValue("@lv", acc.LevelAccount);
                 cmd.Parameters.AddWithValue("@s", acc.SoSkinSung);
                 cmd.Parameters.AddWithValue("@idAcc", acc.Id);
+                cmd.Parameters.AddWithValue("@n", (object)acc.Note ?? DBNull.Value);
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -139,8 +141,8 @@ namespace GameManager.DAL
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sql = "INSERT INTO LienQuanAccounts (Username, Password, LoginType, RankLienQuan, SoTuong, Skins) " +
-                             "VALUES (@u, @p, @t, @rank, @st, @skins)";
+                string sql = "INSERT INTO LienQuanAccounts (Username, Password, LoginType, RankLienQuan, SoTuong, Skins,Note) " +
+                             "VALUES (@u, @p, @t, @rank, @st, @skins, @n)";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@u", acc.Username);
                 cmd.Parameters.AddWithValue("@p", acc.Password);
@@ -148,6 +150,7 @@ namespace GameManager.DAL
                 cmd.Parameters.AddWithValue("@rank", acc.RankLienQuan ?? "");
                 cmd.Parameters.AddWithValue("@st", acc.SoTuong);
                 cmd.Parameters.AddWithValue("@skins", acc.Skins);
+                cmd.Parameters.AddWithValue("@n", (object)acc.Note ?? DBNull.Value);
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -157,7 +160,7 @@ namespace GameManager.DAL
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string sql = "UPDATE LienQuanAccounts SET Username=@u, Password=@p, LoginType=@t, " +
-                             "RankLienQuan=@rank, SoTuong=@st, Skins=@skins WHERE Id=@idAcc";
+                             "RankLienQuan=@rank, SoTuong=@st, Skins=@skins, Note=@n WHERE Id=@idAcc";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@u", acc.Username);
                 cmd.Parameters.AddWithValue("@p", acc.Password);
@@ -166,6 +169,7 @@ namespace GameManager.DAL
                 cmd.Parameters.AddWithValue("@st", acc.SoTuong);
                 cmd.Parameters.AddWithValue("@skins", acc.Skins);
                 cmd.Parameters.AddWithValue("@idAcc", acc.Id);
+                cmd.Parameters.AddWithValue("@n", (object)acc.Note ?? DBNull.Value);
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -175,8 +179,8 @@ namespace GameManager.DAL
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sql = "INSERT INTO FCMobileAccounts (Username, Password, LoginType, DoiHinh_OVR, GiaTriDoiHinh, Region) " +
-                             "VALUES (@u, @p, @t, @ovr, @giaTri, @region)";
+                string sql = "INSERT INTO FCMobileAccounts (Username, Password, LoginType, DoiHinh_OVR, GiaTriDoiHinh, Region, Note) " +
+                             "VALUES (@u, @p, @t, @ovr, @giaTri, @region, @n)";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@u", acc.Username);
                 cmd.Parameters.AddWithValue("@p", acc.Password);
@@ -184,6 +188,7 @@ namespace GameManager.DAL
                 cmd.Parameters.AddWithValue("@ovr", acc.DoiHinh_OVR);
                 cmd.Parameters.AddWithValue("@giaTri", acc.GiaTriDoiHinh);
                 cmd.Parameters.AddWithValue("@region", acc.Region ?? "");
+                cmd.Parameters.AddWithValue("@n", (object)acc.Note ?? DBNull.Value);
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -193,7 +198,7 @@ namespace GameManager.DAL
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string sql = "UPDATE FCMobileAccounts SET Username=@u, Password=@p, LoginType=@t, " +
-                             "DoiHinh_OVR=@ovr, GiaTriDoiHinh=@giaTri, Region=@region WHERE Id=@idAcc";
+                             "DoiHinh_OVR=@ovr, GiaTriDoiHinh=@giaTri, Region=@region, Note=@n WHERE Id=@idAcc";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@u", acc.Username);
                 cmd.Parameters.AddWithValue("@p", acc.Password);
@@ -202,6 +207,7 @@ namespace GameManager.DAL
                 cmd.Parameters.AddWithValue("@giaTri", acc.GiaTriDoiHinh);
                 cmd.Parameters.AddWithValue("@region", acc.Region ?? "");
                 cmd.Parameters.AddWithValue("@idAcc", acc.Id);
+                cmd.Parameters.AddWithValue("@n", (object)acc.Note ?? DBNull.Value);
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
