@@ -12,13 +12,14 @@ namespace GameManager.DTO
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public string LoginType { get; set; } 
+        public string LoginType { get; set; }
+        
 
         // Thuộc tính riêng của Liên Quân 
         public string RankLienQuan { get; set; }
         public int SoTuong { get; set; }
         public int Skins { get; set; }
-
+  
         // Thuộc tính riêng của Free Fire 
         public string ID_InGame { get; set; }
         public int LevelAccount { get; set; }
@@ -31,5 +32,6 @@ namespace GameManager.DTO
 
         // Thuộc tính để phân loại
         public string GameCategory { get; set; }
+        public string Note { get; set; }
     }
 }
