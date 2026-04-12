@@ -33,7 +33,12 @@ namespace GameManager.GUI
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Chào mừng bạn quay trở lại!\nHãy đảm bảo an toàn cho mật khẩu của bạn.",
+                            "Quản lý tài khoản Game",
+                            MessageBoxButtons.OK); 
+        }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             GameService _gameService = new GameService();

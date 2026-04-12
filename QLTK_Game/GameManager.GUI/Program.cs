@@ -14,8 +14,7 @@ internal static class Program
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-
-                // Đảm bảo FormLogin là tên chính xác của Form đăng nhập của bạn
+            MessageBox.Show("UserName:admin\nPassword: admin", "Thông tin", MessageBoxButtons.OK);
                 Application.Run(new FormLogin());
             }
         }

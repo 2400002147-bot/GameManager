@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.btnFreeFire = new System.Windows.Forms.Button();
             this.btnLienQuan = new System.Windows.Forms.Button();
             this.btnFCMobile = new System.Windows.Forms.Button();
@@ -137,13 +138,13 @@
             this.Controls.Add(this.btnLienQuan);
             this.Controls.Add(this.btnFreeFire);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Menu";
-           
             this.panelHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 

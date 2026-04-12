@@ -15,7 +15,7 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblUser = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.lblPass = new System.Windows.Forms.Label();
@@ -36,6 +36,8 @@
             this.chkShowPass = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDangNhap = new System.Windows.Forms.Button();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numSoTuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLienQuan)).BeginInit();
@@ -43,7 +45,7 @@
             // 
             // lblUser
             // 
-            this.lblUser.Location = new System.Drawing.Point(80, 88);
+            this.lblUser.Location = new System.Drawing.Point(38, 77);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(100, 23);
             this.lblUser.TabIndex = 0;
@@ -51,14 +53,14 @@
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(186, 85);
+            this.txtUser.Location = new System.Drawing.Point(144, 74);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(228, 22);
             this.txtUser.TabIndex = 1;
             // 
             // lblPass
             // 
-            this.lblPass.Location = new System.Drawing.Point(80, 123);
+            this.lblPass.Location = new System.Drawing.Point(38, 112);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(100, 23);
             this.lblPass.TabIndex = 2;
@@ -66,7 +68,7 @@
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(186, 121);
+            this.txtPass.Location = new System.Drawing.Point(144, 110);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(228, 22);
             this.txtPass.TabIndex = 3;
@@ -74,7 +76,7 @@
             // 
             // lblLoginType
             // 
-            this.lblLoginType.Location = new System.Drawing.Point(80, 155);
+            this.lblLoginType.Location = new System.Drawing.Point(38, 144);
             this.lblLoginType.Name = "lblLoginType";
             this.lblLoginType.Size = new System.Drawing.Size(153, 23);
             this.lblLoginType.TabIndex = 4;
@@ -86,14 +88,14 @@
             "Garena",
             "Facebook",
             "Google"});
-            this.cboLoginType.Location = new System.Drawing.Point(239, 152);
+            this.cboLoginType.Location = new System.Drawing.Point(197, 141);
             this.cboLoginType.Name = "cboLoginType";
             this.cboLoginType.Size = new System.Drawing.Size(175, 24);
             this.cboLoginType.TabIndex = 5;
             // 
             // lblRank
             // 
-            this.lblRank.Location = new System.Drawing.Point(545, 91);
+            this.lblRank.Location = new System.Drawing.Point(473, 78);
             this.lblRank.Name = "lblRank";
             this.lblRank.Size = new System.Drawing.Size(100, 23);
             this.lblRank.TabIndex = 6;
@@ -111,14 +113,14 @@
             "Tinh Anh",
             "Cao Thủ",
             "Chiến Tướng"});
-            this.cboRank.Location = new System.Drawing.Point(645, 88);
+            this.cboRank.Location = new System.Drawing.Point(573, 75);
             this.cboRank.Name = "cboRank";
             this.cboRank.Size = new System.Drawing.Size(250, 24);
             this.cboRank.TabIndex = 7;
             // 
             // lblSoTuong
             // 
-            this.lblSoTuong.Location = new System.Drawing.Point(545, 126);
+            this.lblSoTuong.Location = new System.Drawing.Point(473, 113);
             this.lblSoTuong.Name = "lblSoTuong";
             this.lblSoTuong.Size = new System.Drawing.Size(81, 23);
             this.lblSoTuong.TabIndex = 8;
@@ -126,19 +128,19 @@
             // 
             // numSoTuong
             // 
-            this.numSoTuong.Location = new System.Drawing.Point(645, 123);
+            this.numSoTuong.Location = new System.Drawing.Point(573, 110);
             this.numSoTuong.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numSoTuong.Name = "numSoTuong";
-            this.numSoTuong.Size = new System.Drawing.Size(250, 22);
+            this.numSoTuong.Size = new System.Drawing.Size(142, 22);
             this.numSoTuong.TabIndex = 9;
             // 
             // lblSkins
             // 
-            this.lblSkins.Location = new System.Drawing.Point(545, 161);
+            this.lblSkins.Location = new System.Drawing.Point(473, 148);
             this.lblSkins.Name = "lblSkins";
             this.lblSkins.Size = new System.Drawing.Size(100, 23);
             this.lblSkins.TabIndex = 10;
@@ -146,14 +148,14 @@
             // 
             // numSkins
             // 
-            this.numSkins.Location = new System.Drawing.Point(645, 158);
+            this.numSkins.Location = new System.Drawing.Point(573, 145);
             this.numSkins.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.numSkins.Name = "numSkins";
-            this.numSkins.Size = new System.Drawing.Size(250, 22);
+            this.numSkins.Size = new System.Drawing.Size(142, 22);
             this.numSkins.TabIndex = 11;
             // 
             // btnThem
@@ -197,14 +199,14 @@
             this.dgvLienQuan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLienQuan.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvLienQuan.ColumnHeadersHeight = 29;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLienQuan.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLienQuan.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLienQuan.Location = new System.Drawing.Point(31, 267);
             this.dgvLienQuan.Name = "dgvLienQuan";
             this.dgvLienQuan.RowHeadersWidth = 51;
@@ -215,7 +217,7 @@
             // chkShowPass
             // 
             this.chkShowPass.AutoSize = true;
-            this.chkShowPass.Location = new System.Drawing.Point(421, 126);
+            this.chkShowPass.Location = new System.Drawing.Point(379, 115);
             this.chkShowPass.Name = "chkShowPass";
             this.chkShowPass.Size = new System.Drawing.Size(62, 20);
             this.chkShowPass.TabIndex = 17;
@@ -243,10 +245,29 @@
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
+            // txtNote
+            // 
+            this.txtNote.Location = new System.Drawing.Point(798, 113);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtNote.Size = new System.Drawing.Size(131, 63);
+            this.txtNote.TabIndex = 26;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(721, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 23);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Ghi chú:";
+            // 
             // frmLienQuan
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.ClientSize = new System.Drawing.Size(958, 552);
+            this.Controls.Add(this.txtNote);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkShowPass);
@@ -288,5 +309,7 @@
         private System.Windows.Forms.CheckBox chkShowPass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDangNhap;
+        private System.Windows.Forms.TextBox txtNote;
+        private System.Windows.Forms.Label label2;
     }
 }

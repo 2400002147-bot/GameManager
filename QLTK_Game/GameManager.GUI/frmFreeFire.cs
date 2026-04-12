@@ -95,7 +95,8 @@ namespace GameManager.GUI
                 LoginType = cboLoginType.Text, // Dùng .Text an toàn hơn
                 ID_InGame = txtIDInGame.Text.Trim(),
                 LevelAccount = (int)numLevel.Value,
-                SoSkinSung = (int)numSoSkin.Value
+                SoSkinSung = (int)numSoSkin.Value,
+                Note = txtNote.Text
             };
 
             if (_gameService.AddFreeFire(acc))
@@ -123,7 +124,8 @@ namespace GameManager.GUI
                 LoginType = cboLoginType.Text,
                 ID_InGame = txtIDInGame.Text.Trim(),
                 LevelAccount = (int)numLevel.Value,
-                SoSkinSung = (int)numSoSkin.Value
+                SoSkinSung = (int)numSoSkin.Value,
+                Note = txtNote.Text
             };
 
             if (_gameService.UpdateFreeFire(acc))
@@ -157,6 +159,7 @@ namespace GameManager.GUI
             numSoSkin.Value = numSoSkin.Minimum;
             if (cboLoginType.Items.Count > 0) cboLoginType.SelectedIndex = 0;
             txtUser.Focus();
+            txtNote.Clear();
         }
 
         private void dgvFreeFire_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -172,6 +175,7 @@ namespace GameManager.GUI
                     txtIDInGame.Text = acc.ID_InGame;
                     numLevel.Value = Math.Max(numLevel.Minimum, Math.Min(numLevel.Maximum, acc.LevelAccount));
                     numSoSkin.Value = Math.Max(numSoSkin.Minimum, Math.Min(numSoSkin.Maximum, acc.SoSkinSung));
+                    txtNote.Text = acc.Note;
                 }
             }
         }
@@ -193,7 +197,7 @@ namespace GameManager.GUI
             this.WindowState = FormWindowState.Minimized;
             try
             {
-                // 1. Lấy thư mục hiện tại (...bin\Debug)
+                // 1. Lấy thư mục hiện tại 
                 string currentDir = AppDomain.CurrentDomain.BaseDirectory;
                 DirectoryInfo di = new DirectoryInfo(currentDir);
 

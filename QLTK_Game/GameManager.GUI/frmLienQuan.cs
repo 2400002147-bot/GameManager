@@ -98,7 +98,8 @@ namespace GameManager.GUI
                 RankLienQuan = cboRank.SelectedItem.ToString(), // Lấy từ ComboBox chọn
                 SoTuong = (int)numSoTuong.Value,
                 Skins = (int)numSkins.Value,
-                GameCategory = "LienQuan" // Đánh dấu loại game để DAL xử lý
+                GameCategory = "LienQuan" ,
+                Note = txtNote.Text
             };
 
             if (_gameService.AddLienQuan(acc))
@@ -122,7 +123,8 @@ namespace GameManager.GUI
                 LoginType = cboLoginType.SelectedItem.ToString(),
                 RankLienQuan = cboRank.SelectedItem.ToString(),
                 SoTuong = (int)numSoTuong.Value,
-                Skins = (int)numSkins.Value
+                Skins = (int)numSkins.Value,
+                Note = txtNote.Text
             };
 
             if (_gameService.UpdateLienQuan(acc))
@@ -159,6 +161,7 @@ namespace GameManager.GUI
             cboLoginType.SelectedIndex = 0;
             cboRank.SelectedIndex = 0;
             txtUser.Focus();
+            txtNote.Clear();
         }
 
         // 7. Click để hiện dữ liệu lên các ô nhập
@@ -176,6 +179,7 @@ namespace GameManager.GUI
                     cboRank.Text = acc.RankLienQuan ?? "";
                     numSoTuong.Value = acc.SoTuong;
                     numSkins.Value = acc.Skins;
+                    txtNote.Text = acc.Note ?? "";
                 }
             }
         }

@@ -36,6 +36,8 @@
             this.chkShowPass = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDangNhap = new System.Windows.Forms.Button();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSoSkin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFreeFire)).BeginInit();
@@ -43,7 +45,7 @@
             // 
             // lblUser
             // 
-            this.lblUser.Location = new System.Drawing.Point(89, 74);
+            this.lblUser.Location = new System.Drawing.Point(42, 75);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(100, 23);
             this.lblUser.TabIndex = 0;
@@ -51,14 +53,14 @@
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(195, 71);
+            this.txtUser.Location = new System.Drawing.Point(148, 72);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(228, 26);
             this.txtUser.TabIndex = 1;
             // 
             // lblPass
             // 
-            this.lblPass.Location = new System.Drawing.Point(89, 109);
+            this.lblPass.Location = new System.Drawing.Point(42, 110);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(100, 23);
             this.lblPass.TabIndex = 2;
@@ -66,7 +68,7 @@
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(195, 107);
+            this.txtPass.Location = new System.Drawing.Point(148, 108);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(228, 26);
             this.txtPass.TabIndex = 3;
@@ -74,7 +76,7 @@
             // 
             // lblLoginType
             // 
-            this.lblLoginType.Location = new System.Drawing.Point(89, 147);
+            this.lblLoginType.Location = new System.Drawing.Point(42, 148);
             this.lblLoginType.Name = "lblLoginType";
             this.lblLoginType.Size = new System.Drawing.Size(153, 23);
             this.lblLoginType.TabIndex = 4;
@@ -86,14 +88,14 @@
             "Garena",
             "Facebook",
             "Google"});
-            this.cboLoginType.Location = new System.Drawing.Point(248, 144);
+            this.cboLoginType.Location = new System.Drawing.Point(201, 145);
             this.cboLoginType.Name = "cboLoginType";
             this.cboLoginType.Size = new System.Drawing.Size(175, 26);
             this.cboLoginType.TabIndex = 5;
             // 
             // lblIDInGame
             // 
-            this.lblIDInGame.Location = new System.Drawing.Point(554, 77);
+            this.lblIDInGame.Location = new System.Drawing.Point(470, 78);
             this.lblIDInGame.Name = "lblIDInGame";
             this.lblIDInGame.Size = new System.Drawing.Size(100, 23);
             this.lblIDInGame.TabIndex = 6;
@@ -101,14 +103,14 @@
             // 
             // txtIDInGame
             // 
-            this.txtIDInGame.Location = new System.Drawing.Point(654, 74);
+            this.txtIDInGame.Location = new System.Drawing.Point(570, 75);
             this.txtIDInGame.Name = "txtIDInGame";
             this.txtIDInGame.Size = new System.Drawing.Size(250, 26);
             this.txtIDInGame.TabIndex = 7;
             // 
             // lblLevel
             // 
-            this.lblLevel.Location = new System.Drawing.Point(554, 112);
+            this.lblLevel.Location = new System.Drawing.Point(470, 113);
             this.lblLevel.Name = "lblLevel";
             this.lblLevel.Size = new System.Drawing.Size(81, 23);
             this.lblLevel.TabIndex = 8;
@@ -116,14 +118,14 @@
             // 
             // numLevel
             // 
-            this.numLevel.Location = new System.Drawing.Point(654, 109);
+            this.numLevel.Location = new System.Drawing.Point(570, 110);
             this.numLevel.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.numLevel.Name = "numLevel";
-            this.numLevel.Size = new System.Drawing.Size(250, 26);
+            this.numLevel.Size = new System.Drawing.Size(121, 26);
             this.numLevel.TabIndex = 9;
             this.numLevel.Value = new decimal(new int[] {
             1,
@@ -133,7 +135,7 @@
             // 
             // lblSkin
             // 
-            this.lblSkin.Location = new System.Drawing.Point(554, 147);
+            this.lblSkin.Location = new System.Drawing.Point(470, 148);
             this.lblSkin.Name = "lblSkin";
             this.lblSkin.Size = new System.Drawing.Size(100, 23);
             this.lblSkin.TabIndex = 10;
@@ -178,7 +180,7 @@
             // numSoSkin
             // 
             this.numSoSkin.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.numSoSkin.Location = new System.Drawing.Point(654, 145);
+            this.numSoSkin.Location = new System.Drawing.Point(570, 146);
             this.numSoSkin.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -190,7 +192,7 @@
             0,
             0});
             this.numSoSkin.Name = "numSoSkin";
-            this.numSoSkin.Size = new System.Drawing.Size(250, 26);
+            this.numSoSkin.Size = new System.Drawing.Size(121, 26);
             this.numSoSkin.TabIndex = 17;
             this.numSoSkin.Value = new decimal(new int[] {
             1,
@@ -222,7 +224,7 @@
             // chkShowPass
             // 
             this.chkShowPass.AutoSize = true;
-            this.chkShowPass.Location = new System.Drawing.Point(430, 111);
+            this.chkShowPass.Location = new System.Drawing.Point(383, 112);
             this.chkShowPass.Name = "chkShowPass";
             this.chkShowPass.Size = new System.Drawing.Size(64, 22);
             this.chkShowPass.TabIndex = 19;
@@ -250,10 +252,29 @@
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
+            // txtNote
+            // 
+            this.txtNote.Location = new System.Drawing.Point(779, 113);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtNote.Size = new System.Drawing.Size(131, 63);
+            this.txtNote.TabIndex = 26;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(702, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 23);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Ghi chú:";
+            // 
             // frmFreeFire
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.ClientSize = new System.Drawing.Size(958, 550);
+            this.Controls.Add(this.txtNote);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkShowPass);
@@ -298,5 +319,7 @@
         private System.Windows.Forms.CheckBox chkShowPass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDangNhap;
+        private System.Windows.Forms.TextBox txtNote;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -36,13 +36,15 @@
             this.chkShowPass = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDangNhap = new System.Windows.Forms.Button();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numOVR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFCMobile)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUser
             // 
-            this.lblUser.Location = new System.Drawing.Point(89, 75);
+            this.lblUser.Location = new System.Drawing.Point(45, 77);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(100, 23);
             this.lblUser.TabIndex = 16;
@@ -50,14 +52,14 @@
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(195, 72);
+            this.txtUser.Location = new System.Drawing.Point(151, 74);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(228, 24);
             this.txtUser.TabIndex = 15;
             // 
             // lblPass
             // 
-            this.lblPass.Location = new System.Drawing.Point(89, 110);
+            this.lblPass.Location = new System.Drawing.Point(45, 112);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(100, 23);
             this.lblPass.TabIndex = 14;
@@ -65,7 +67,7 @@
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(195, 108);
+            this.txtPass.Location = new System.Drawing.Point(151, 110);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(228, 24);
             this.txtPass.TabIndex = 13;
@@ -73,7 +75,7 @@
             // 
             // lblLoginType
             // 
-            this.lblLoginType.Location = new System.Drawing.Point(89, 142);
+            this.lblLoginType.Location = new System.Drawing.Point(45, 144);
             this.lblLoginType.Name = "lblLoginType";
             this.lblLoginType.Size = new System.Drawing.Size(166, 23);
             this.lblLoginType.TabIndex = 12;
@@ -86,14 +88,14 @@
             "Garena",
             "Facebook",
             "Google"});
-            this.cboLoginType.Location = new System.Drawing.Point(261, 139);
+            this.cboLoginType.Location = new System.Drawing.Point(217, 141);
             this.cboLoginType.Name = "cboLoginType";
             this.cboLoginType.Size = new System.Drawing.Size(162, 26);
             this.cboLoginType.TabIndex = 11;
             // 
             // lblOVR
             // 
-            this.lblOVR.Location = new System.Drawing.Point(554, 78);
+            this.lblOVR.Location = new System.Drawing.Point(485, 110);
             this.lblOVR.Name = "lblOVR";
             this.lblOVR.Size = new System.Drawing.Size(100, 23);
             this.lblOVR.TabIndex = 10;
@@ -101,19 +103,19 @@
             // 
             // numOVR
             // 
-            this.numOVR.Location = new System.Drawing.Point(654, 75);
+            this.numOVR.Location = new System.Drawing.Point(585, 107);
             this.numOVR.Maximum = new decimal(new int[] {
             200,
             0,
             0,
             0});
             this.numOVR.Name = "numOVR";
-            this.numOVR.Size = new System.Drawing.Size(250, 24);
+            this.numOVR.Size = new System.Drawing.Size(113, 24);
             this.numOVR.TabIndex = 9;
             // 
             // lblGiaTri
             // 
-            this.lblGiaTri.Location = new System.Drawing.Point(554, 113);
+            this.lblGiaTri.Location = new System.Drawing.Point(485, 74);
             this.lblGiaTri.Name = "lblGiaTri";
             this.lblGiaTri.Size = new System.Drawing.Size(100, 23);
             this.lblGiaTri.TabIndex = 8;
@@ -121,14 +123,14 @@
             // 
             // txtGiaTri
             // 
-            this.txtGiaTri.Location = new System.Drawing.Point(654, 110);
+            this.txtGiaTri.Location = new System.Drawing.Point(585, 71);
             this.txtGiaTri.Name = "txtGiaTri";
-            this.txtGiaTri.Size = new System.Drawing.Size(250, 24);
+            this.txtGiaTri.Size = new System.Drawing.Size(169, 24);
             this.txtGiaTri.TabIndex = 7;
             // 
             // lblRegion
             // 
-            this.lblRegion.Location = new System.Drawing.Point(554, 148);
+            this.lblRegion.Location = new System.Drawing.Point(485, 151);
             this.lblRegion.Name = "lblRegion";
             this.lblRegion.Size = new System.Drawing.Size(100, 23);
             this.lblRegion.TabIndex = 5;
@@ -141,9 +143,9 @@
             "Việt Nam (VN)",
             "Hàn Quốc (KR)",
             "Nhật Bản (JP)"});
-            this.cboRegion.Location = new System.Drawing.Point(654, 145);
+            this.cboRegion.Location = new System.Drawing.Point(585, 148);
             this.cboRegion.Name = "cboRegion";
-            this.cboRegion.Size = new System.Drawing.Size(250, 26);
+            this.cboRegion.Size = new System.Drawing.Size(113, 26);
             this.cboRegion.TabIndex = 6;
             // 
             // btnThem
@@ -205,7 +207,7 @@
             // chkShowPass
             // 
             this.chkShowPass.AutoSize = true;
-            this.chkShowPass.Location = new System.Drawing.Point(430, 113);
+            this.chkShowPass.Location = new System.Drawing.Point(386, 115);
             this.chkShowPass.Name = "chkShowPass";
             this.chkShowPass.Size = new System.Drawing.Size(68, 22);
             this.chkShowPass.TabIndex = 17;
@@ -233,10 +235,29 @@
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
+            // txtNote
+            // 
+            this.txtNote.Location = new System.Drawing.Point(790, 111);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtNote.Size = new System.Drawing.Size(131, 63);
+            this.txtNote.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(713, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 23);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Ghi chú:";
+            // 
             // frmFCMobile
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.ClientSize = new System.Drawing.Size(958, 547);
+            this.Controls.Add(this.txtNote);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkShowPass);
@@ -279,5 +300,7 @@
         private System.Windows.Forms.CheckBox chkShowPass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDangNhap;
+        private System.Windows.Forms.TextBox txtNote;
+        private System.Windows.Forms.Label label2;
     }
 }

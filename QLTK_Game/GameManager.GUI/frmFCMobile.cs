@@ -93,7 +93,8 @@ namespace GameManager.GUI
                 LoginType = cboLoginType.SelectedItem.ToString(),
                 DoiHinh_OVR = (int)numOVR.Value,
                 GiaTriDoiHinh = long.Parse(txtGiaTri.Text.Replace(".", "").Replace(",", "")), // Xử lý BIGINT
-                Region = cboRegion.SelectedItem.ToString()
+                Region = cboRegion.SelectedItem.ToString(),
+                Note = txtNote.Text
             };
 
             if (_gameService.AddFCMobile(acc))
@@ -116,7 +117,8 @@ namespace GameManager.GUI
                 LoginType = cboLoginType.SelectedItem.ToString(),
                 DoiHinh_OVR = (int)numOVR.Value,
                 GiaTriDoiHinh = long.Parse(txtGiaTri.Text),
-                Region = cboRegion.SelectedItem.ToString()
+                Region = cboRegion.SelectedItem.ToString(),
+                Note = txtNote.Text
             };
 
             if (_gameService.UpdateFCMobile(acc))
@@ -145,6 +147,7 @@ namespace GameManager.GUI
             numOVR.Value = 0;
             cboLoginType.SelectedIndex = 0;
             cboRegion.SelectedIndex = 0;
+            txtNote.Clear();
         }
         // Click vào dòng để hiển thị thông tin lên form
         private void dgvFCMobile_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -161,6 +164,7 @@ namespace GameManager.GUI
                     numOVR.Value = acc.DoiHinh_OVR;
                     txtGiaTri.Text = acc.GiaTriDoiHinh.ToString();
                     cboRegion.Text = acc.Region ?? "";
+                    txtNote.Text = acc.Note ?? "";
                 }
             }
         }
