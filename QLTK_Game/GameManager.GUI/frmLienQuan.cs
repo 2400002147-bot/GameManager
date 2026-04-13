@@ -183,7 +183,7 @@ namespace GameManager.GUI
                 }
             }
         }
-
+        // 8. Checkbox hiện mật khẩu 
         private void chkShowPass_CheckedChanged(object sender, EventArgs e)
         {
             if (chkShowPass.Checked)
@@ -197,7 +197,7 @@ namespace GameManager.GUI
                 txtPass.UseSystemPasswordChar = true;
             }
         }
-
+        // 9. Nút ĐĂNG NHẬP
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;

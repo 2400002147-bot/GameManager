@@ -92,7 +92,7 @@ namespace GameManager.GUI
                 Password = txtPass.Text.Trim(),
                 LoginType = cboLoginType.SelectedItem.ToString(),
                 DoiHinh_OVR = (int)numOVR.Value,
-                GiaTriDoiHinh = long.Parse(txtGiaTri.Text.Replace(".", "").Replace(",", "")), // Xử lý BIGINT
+                GiaTriDoiHinh = long.Parse(txtGiaTri.Text.Replace(".", "").Replace(",", "")), 
                 Region = cboRegion.SelectedItem.ToString(),
                 Note = txtNote.Text
             };
