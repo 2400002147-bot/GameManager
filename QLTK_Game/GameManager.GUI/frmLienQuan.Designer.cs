@@ -211,7 +211,7 @@
             this.dgvLienQuan.Location = new System.Drawing.Point(31, 267);
             this.dgvLienQuan.Name = "dgvLienQuan";
             this.dgvLienQuan.RowHeadersWidth = 51;
-            this.dgvLienQuan.Size = new System.Drawing.Size(898, 273);
+            this.dgvLienQuan.Size = new System.Drawing.Size(898, 260);
             this.dgvLienQuan.TabIndex = 16;
             this.dgvLienQuan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLienQuan_CellClick);
             // 

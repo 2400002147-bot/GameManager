@@ -35,7 +35,7 @@ namespace GameManager.GUI
         {
             // Hình thức đăng nhập
             cboLoginType.Items.Clear();
-            cboLoginType.Items.AddRange(new string[] { "EA Account", "Facebook", "Google Play", "Apple ID" });
+            cboLoginType.Items.AddRange(new string[] { "EA Account", "Facebook", "Google", "Garena" });
             cboLoginType.SelectedIndex = 0;
 
             // Khu vực Server

@@ -37,7 +37,7 @@ namespace GameManager.GUI
         {
             // Danh sách phương thức đăng nhập
             cboLoginType.Items.Clear();
-            cboLoginType.Items.AddRange(new string[] { "Garena", "Facebook", "Apple ID" });
+            cboLoginType.Items.AddRange(new string[] { "Garena", "Facebook", "Google" });
             cboLoginType.SelectedIndex = 0;
 
             // Danh sách Rank Liên Quân
